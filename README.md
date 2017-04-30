@@ -1,11 +1,11 @@
 ## LegoArtist
 A simple app that lets you turn images into LEGO mosaics.
 
-### Example
+## Example
 <img src="./src/main/resources/legoartist/bolt.jpg" width="600"/>
-<img src="./src/main/resources/legoartist/bolt_legolized.png" width="625"/>
+<img src="./src/main/resources/legoartist/bolt_legolized.png" width="600"/>
 
-### Quick Start
+## Quick Start
 Follow these steps to run LegoArtist:
 ```
 # Clone LegoArtist
@@ -20,3 +20,4 @@ $ sbt
 # Run LegoArtist
 > run
 ```
+
