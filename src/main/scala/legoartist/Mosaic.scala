@@ -69,7 +69,7 @@ object Mosaic {
   }
 
   private def getLayouts(tileGroups: List[TileGroup]): List[Layout] = {
-    tileGroups.par.map(tg => new Layout(tg, Nil).dfs(_.tileGroup.isEmpty).take(10000).minBy(x => x.placements.size)).toList
+    tileGroups.par.map(tg => new Layout(tg, Nil).dfs(_.tileGroup.isEmpty).take(1000).minBy(x => x.placements.size)).toList
   }
 
   private def fill(dst: Img, x: Int, y: Int, dx: Int, dy: Int, rgba: RGBA): Unit = {

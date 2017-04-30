@@ -42,7 +42,7 @@ class PhotoCanvas extends JComponent {
     val bufferedImage = ImageIO.read(inputStream)
     val width = bufferedImage.getWidth
     val height = bufferedImage.getHeight
-    val img = new Img(width + 1, height + 1)
+    val img = new Img(width, height)
     for (x <- 0 until width; y <- 0 until height) img(x, y) = bufferedImage.getRGB(x, y)
     img
   }
@@ -69,7 +69,8 @@ class PhotoCanvas extends JComponent {
 
   def convert(distanceFunction: String, hTileCount: Int, vTileCount: Int) {
     reload()
-    val dst = new Img(image.width, image.height)
+    val dst = new Img(hTileCount * (image.width / hTileCount) + 1,
+        vTileCount * (image.height / vTileCount) + 1)
     val mosaic = Mosaic.getMosaic(image, hTileCount, vTileCount, distanceFunction)
     val bricks = Mosaic.getBricks(mosaic)
     Mosaic.drawMosaic(dst, mosaic)

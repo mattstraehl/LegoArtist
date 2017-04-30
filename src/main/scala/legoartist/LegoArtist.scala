@@ -50,13 +50,13 @@ object LegoArtist {
     val hTileCountLabel = new JLabel("Horizontal Tile Count")
     controls.add(hTileCountLabel)
 
-    val hTileCountSpinner = new JSpinner(new SpinnerNumberModel(48, 1, 256, 1))
+    val hTileCountSpinner = new JSpinner(new SpinnerNumberModel(48, 2, 1024, 1))
     controls.add(hTileCountSpinner)
 
     val vTileCountLabel = new JLabel("Vertical Tile Count")
     controls.add(vTileCountLabel)
 
-    val vTileCountSpinner = new JSpinner(new SpinnerNumberModel(48, 1, 256, 1))
+    val vTileCountSpinner = new JSpinner(new SpinnerNumberModel(48, 2, 1024, 1))
     controls.add(vTileCountSpinner)
 
     val stepbutton = new JButton("Convert")
