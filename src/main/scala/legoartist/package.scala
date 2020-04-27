@@ -6,7 +6,7 @@ package object legoartist {
 
   type TileGroup = List[Tile]
 
-  type BrickPlacement = (Int, Int, AvailableBricks.Brick)
+  type BrickPlacement = (Int, Int, AvailableBricks.Brick, RGBA)
 
   def alpha(c: RGBA): Int = (0xff000000 & c) >>> 24
 

@@ -43,8 +43,7 @@ object LegoArtist {
 
     val distanceFunctionCombo = new JComboBox(Array(
       "euclidean-distance",
-      "manhattan-distance"
-    ))
+      "manhattan-distance"))
     controls.add(distanceFunctionCombo)
 
     val hTileCountLabel = new JLabel("Horizontal Tile Count")

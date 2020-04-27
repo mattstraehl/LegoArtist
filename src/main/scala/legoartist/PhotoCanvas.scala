@@ -70,11 +70,35 @@ class PhotoCanvas extends JComponent {
   def convert(distanceFunction: String, hTileCount: Int, vTileCount: Int) {
     reload()
     val dst = new Img(hTileCount * (image.width / hTileCount) + 1,
-        vTileCount * (image.height / vTileCount) + 1)
+      vTileCount * (image.height / vTileCount) + 1)
     val mosaic = Mosaic.getMosaic(image, hTileCount, vTileCount, distanceFunction)
     val bricks = Mosaic.getBricks(mosaic)
-    Mosaic.drawMosaic(dst, mosaic)
+    Mosaic.drawMosaic(bricks, dst, hTileCount, vTileCount)
     Mosaic.drawBricks(bricks, dst, hTileCount, vTileCount)
+    Mosaic.drawColorNumbers(bricks, dst, hTileCount, vTileCount)
+
+    val grouped = bricks.groupBy(b => (b._3, AvailableColors.all.find(c => c.rgba == b._4).get))
+    val brickShapes = List(
+      List(AvailableBricks.B1x1),
+      List(AvailableBricks.B2x2),
+      List(AvailableBricks.B1x2, AvailableBricks.B2x1),
+      List(AvailableBricks.B1x3, AvailableBricks.B3x1),
+      List(AvailableBricks.B2x3, AvailableBricks.B3x2),
+      List(AvailableBricks.C1, AvailableBricks.C2, AvailableBricks.C3))
+    var total = 0
+    brickShapes.foreach { bs =>
+      println(bs)
+      AvailableColors.all.foreach { c =>
+        val count = bs.map(s => grouped.getOrElse((s, c), Nil).size).sum
+        if (count > 0) {
+          println("\t%s: %d".format(c, count))
+          total += count
+        }
+      }
+      println
+    }
+    println("Total number of pieces: %d".format(total))
+
     image = dst
     repaint()
   }

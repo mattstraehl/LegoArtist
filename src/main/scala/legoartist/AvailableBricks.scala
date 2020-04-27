@@ -2,7 +2,43 @@ package legoartist
 
 object AvailableBricks {
 
-  val all = List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1)
+  /**
+   * Available colors and bricks as of January 3, 2018, at:
+   * https://shop.lego.com/
+   *
+   * Prices:
+   * 1x1 0.08 / 1 = 0.0800
+   * 1x2 0.09 / 2 = 0.0450
+   * 1x3 0.09 / 3 = 0.0300
+   * 2x2 0.13 / 4 = 0.0325
+   * 2x3 0.18 / 6 = 0.0300
+   * CxC 0.09 / 3 = 0.0300
+   */
+  val forColor = Map[RGBA, List[Brick]](
+    AvailableColors.BLACK.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.BRICK_YELLOW.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.BRIGHT_BLUE.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.BRIGHT_ORANGE.rgba -> List(B3x2, B2x3, B2x2, B2x1, B1x2, B1x1), //
+    AvailableColors.BRIGHT_PURPLE.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.BRIGHT_RED.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.BRIGHT_YELLOW.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.BRIGHT_YELLOWISH_GREEN.rgba -> List(B3x2, B2x3, B2x2, B2x1, B1x2, B1x1),
+    AvailableColors.DARK_AZUR.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.DARK_GREEN.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.DARK_STONE_GREY.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.EARTH_BLUE.rgba -> List(B2x1, B1x2, B1x1), //
+    AvailableColors.FLAME_YELLOWISH_ORANGE.rgba -> List(B2x2, B2x1, B1x2, B1x1),
+    AvailableColors.LIGHT_PURPLE.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.MEDIUM_AZURE.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.MEDIUM_BLUE.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.MEDIUM_LAVENDEL.rgba -> List(B2x1, B1x2, B1x1), //
+    AvailableColors.MEDIUM_STONE_GREY.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.NEW_DARK_RED.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.OLIVE_GREEN.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.REDDISH_BROWN.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1), //
+    AvailableColors.SAND_GREEN.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.SAND_YELLOW.rgba -> List(B2x1, B1x2, B1x1),
+    AvailableColors.WHITE.rgba -> List(B3x2, B2x3, B2x2, B3x1, B1x3, B2x1, B1x2, C1, C2, C3, B1x1)) //
 
   sealed abstract class Brick(val ps: Array[(Int, Int, Array[Border])]) {
     def draw(dst: Img, x: Int, y: Int, dx: Int, dy: Int): Unit = ps.foreach(
